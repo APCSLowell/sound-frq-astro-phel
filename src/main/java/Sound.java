@@ -1,6 +1,5 @@
 import java.util.*;
-public class Sound
-{
+public class Sound{
   /** the array of values in this sound; guaranteed not to be null */
   int[] samples;
 
@@ -13,8 +12,7 @@ public class Sound
    *         Precondition: limit >= 0
    *  @return the number of values in this sound that this method changed
    */
-  public int limitAmplitude(int limit)
-  {  
+  public int limitAmplitude(int limit){  
     /* to be implemented in part (a) */
     int count = 0;
     for(int i = 0; i < samples.length; i++)
@@ -41,7 +39,7 @@ public class Sound
       n++;
       int[] newSamples = new int[samples.length - n];
       for(int i = 0; i < newSamples.length; i++)
-        newSamples[i] = smaples[i+n];
+        newSamples[i] = samples[i+n];
       samples = newSamples;
     }
   }
