@@ -21,8 +21,8 @@ public class Sound
      if(samples[i] > limit)
        samples[i] = limit;
     count++;
-    else if(samples[i] < limit)
-      samples[i] = limit;
+    else if(samples[i] < -limit)
+      samples[i] = -limit;
     count++;
     return count;
   }
@@ -43,4 +43,6 @@ public class Sound
       for(int i = 0; i < newSamples.length; i++)
         newSamples[i] = smaples[i+n];
       samples = newSamples;
+    }
+  }
 }
