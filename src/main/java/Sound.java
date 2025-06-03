@@ -14,13 +14,15 @@ public class Sound{
    */
   public int limitAmplitude(int limit){  
     /* to be implemented in part (a) */
-  digitList = new ArrayList<Integer>();
-    if (num == 0)
-      digitList.add(new Integer(0));
-    while  (num > 0){
-      digitList.add(0, new Integer(num % 10));
-      num /= 10;
-    }
+     int numChanged = 0;
+    for (int i = 0; i < this.samples.length; i++)
+    if (this.samples[i] < -limit)
+      this.samples[i] = -limit;
+    numChanged++; 
+    if (this.samples[i] > limit)
+      this.samples[i] = limit; 
+      numChanged++;
+    return numChanged; 
   }
 
 
@@ -32,8 +34,13 @@ public class Sound{
    */
   public void trimSilenceFromBeginning() {
     /* to be implemented in part (b) */
-    for (int i = 0; i < digitList.size()-1; i++)
-      if (digitList.get(i).intValue() >= digitList.get(i+1).intValue())
-        return false;
-    return true
+ int i = 0; 
+  while (this.samples[i] == 0) { 
+    i++; 
+  } 
+  int[] newSamples = new int[this.samples.length - i]; 
+  for (int j = 0; j < newSamples.length; j++)
+    newSamples[j] = this.samples[j+i]; 
+  this.samples = newSamples;
+  }
 }
