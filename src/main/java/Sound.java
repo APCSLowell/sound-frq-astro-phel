@@ -12,17 +12,20 @@ public class Sound{
    *         Precondition: limit >= 0
    *  @return the number of values in this sound that this method changed
    */
-  public int limitAmplitude(int limit){  
+public int limitAmplitude(int limit) { 
     /* to be implemented in part (a) */
-     int numChanged = 0;
-    for (int i = 0; i < this.samples.length; i++)
-    if (this.samples[i] < -limit)
-      this.samples[i] = -limit;
-    numChanged++; 
-    if (this.samples[i] > limit)
+  int numChanged = 0; 
+  for (int i = 0; i < this.samples.length; i++) { 
+    if (this.samples[i] < -limit) { 
+      this.samples[i] = -limit; 
+      numChanged++; 
+    } 
+    if (this.samples[i] > limit) { 
       this.samples[i] = limit; 
-      numChanged++;
-    return numChanged; 
+      numChanged++; 
+    } 
+  } 
+  return numChanged;
   }
 
 
@@ -32,15 +35,16 @@ public class Sound{
    *  Precondition: samples contains at least one nonzero value
    *  Postcondition: the length of samples reflects the removal of starting silence
    */
-  public void trimSilenceFromBeginning() {
+public void trimSilenceFromBeginning() { 
     /* to be implemented in part (b) */
- int i = 0; 
+  int i = 0; 
   while (this.samples[i] == 0) { 
     i++; 
   } 
   int[] newSamples = new int[this.samples.length - i]; 
-  for (int j = 0; j < newSamples.length; j++)
+  for (int j = 0; j < newSamples.length; j++) { 
     newSamples[j] = this.samples[j+i]; 
+  } 
   this.samples = newSamples;
   }
 }
